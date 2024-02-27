@@ -35,7 +35,7 @@ namespace EF.Repository.Migrations
                     Email = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "date", nullable: false),
-                    Active = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
@@ -48,36 +48,36 @@ namespace EF.Repository.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    User_Id = table.Column<int>(type: "int", nullable: false),
-                    Role_Id = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    RoleId = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_UserRoleMapping", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserRoleMapping_Role_Role_Id",
-                        column: x => x.Role_Id,
+                        name: "FK_UserRoleMapping_Role_RoleId",
+                        column: x => x.RoleId,
                         principalTable: "Role",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_UserRoleMapping_User_User_Id",
-                        column: x => x.User_Id,
+                        name: "FK_UserRoleMapping_User_UserId",
+                        column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserRoleMapping_Role_Id",
+                name: "IX_UserRoleMapping_RoleId",
                 table: "UserRoleMapping",
-                column: "Role_Id");
+                column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserRoleMapping_User_Id",
+                name: "IX_UserRoleMapping_UserId",
                 table: "UserRoleMapping",
-                column: "User_Id");
+                column: "UserId");
         }
 
         /// <inheritdoc />

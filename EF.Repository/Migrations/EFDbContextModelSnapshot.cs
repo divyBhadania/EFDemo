@@ -66,9 +66,6 @@ namespace EF.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("date");
 
@@ -76,6 +73,9 @@ namespace EF.Repository.Migrations
                         .IsRequired()
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -95,18 +95,18 @@ namespace EF.Repository.Migrations
                         new
                         {
                             Id = 1,
-                            Active = true,
                             CreatedOn = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@gmail.com",
+                            IsActive = true,
                             Name = "Admin",
                             Password = "admin@123"
                         },
                         new
                         {
                             Id = 2,
-                            Active = true,
                             CreatedOn = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "member@gmail.com",
+                            IsActive = true,
                             Name = "member",
                             Password = "member@123"
                         });
@@ -125,11 +125,11 @@ namespace EF.Repository.Migrations
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int")
-                        .HasColumnName("Role_Id");
+                        .HasColumnName("RoleId");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int")
-                        .HasColumnName("User_Id");
+                        .HasColumnName("UserId");
 
                     b.HasKey("Id");
 

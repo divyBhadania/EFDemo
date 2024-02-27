@@ -9,9 +9,9 @@ namespace EF.Repository.Model
     {
         [Key]
         public int Id { get; set; }
-        [Column("User_Id")]
+        [Column("UserId")]
         public int UserId { get; set; }
-        [Column("Role_Id")]
+        [Column("RoleId")]
         public int RoleId { get; set; }
         [DefaultValue(true)]
         public bool IsActive { get; set; }

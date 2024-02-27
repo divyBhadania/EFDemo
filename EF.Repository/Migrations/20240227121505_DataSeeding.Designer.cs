@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF.Repository.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20240227093812_Initial")]
-    partial class Initial
+    [Migration("20240227121505_DataSeeding")]
+    partial class DataSeeding
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -45,6 +45,20 @@ namespace EF.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Role");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsActive = true,
+                            Name = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsActive = true,
+                            Name = "Member"
+                        });
                 });
 
             modelBuilder.Entity("EF.Repository.Model.User", b =>
@@ -55,9 +69,6 @@ namespace EF.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("date");
 
@@ -65,6 +76,9 @@ namespace EF.Repository.Migrations
                         .IsRequired()
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -79,6 +93,26 @@ namespace EF.Repository.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedOn = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@gmail.com",
+                            IsActive = true,
+                            Name = "Admin",
+                            Password = "admin@123"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedOn = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "member@gmail.com",
+                            IsActive = true,
+                            Name = "member",
+                            Password = "member@123"
+                        });
                 });
 
             modelBuilder.Entity("EF.Repository.Model.UserRole", b =>
@@ -94,11 +128,11 @@ namespace EF.Repository.Migrations
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int")
-                        .HasColumnName("Role_Id");
+                        .HasColumnName("RoleId");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int")
-                        .HasColumnName("User_Id");
+                        .HasColumnName("UserId");
 
                     b.HasKey("Id");
 
@@ -107,6 +141,29 @@ namespace EF.Repository.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserRoleMapping");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            IsActive = true,
+                            RoleId = 1,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            IsActive = true,
+                            RoleId = 2,
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            IsActive = true,
+                            RoleId = 2,
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("EF.Repository.Model.UserRole", b =>

@@ -24,16 +24,16 @@ namespace EF.Repository.Migrations
 
             migrationBuilder.InsertData(
                 table: "User",
-                columns: new[] { "Id", "Active", "CreatedOn", "Email", "Name", "Password" },
+                columns: new[] { "Id", "CreatedOn", "Email", "IsActive", "Name", "Password" },
                 values: new object[,]
                 {
-                    { 1, true, new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@gmail.com", "Admin", "admin@123" },
-                    { 2, true, new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "member@gmail.com", "member", "member@123" }
+                    { 1, new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@gmail.com", true, "Admin", "admin@123" },
+                    { 2, new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "member@gmail.com", true, "member", "member@123" }
                 });
 
             migrationBuilder.InsertData(
                 table: "UserRoleMapping",
-                columns: new[] { "Id", "IsActive", "Role_Id", "User_Id" },
+                columns: new[] { "Id", "IsActive", "RoleId", "UserId" },
                 values: new object[,]
                 {
                     { 1, true, 1, 1 },

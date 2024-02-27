@@ -18,6 +18,6 @@ namespace EF.Repository.Model
         [Column(TypeName = "date")]
         public DateTime CreatedOn { get; set; }
         [DefaultValue(true)]
-        public bool Active { get; set; }
+        public bool IsActive { get; set; }
     }
 }
