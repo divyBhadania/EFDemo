@@ -13,6 +13,11 @@ namespace EF.Repository.Repository
             _context = context;
         }
 
+        public async Task<int?> CheckUserAuthAsync(string email, string password)
+        {
+            return await _context.Users.Where(x => x.IsActive && x.Email.Equals(email) && x.Password.Equals(password)).Select(x => x.Id).FirstOrDefaultAsync();
+        }
+
         public async Task<bool> DeleteAsync(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id && x.IsActive);

@@ -9,5 +9,6 @@ namespace EF.Repository.Interface
         Task<User> InsertAsync(User user);
         Task<User> UpdateAsync(User user);
         Task<bool> DeleteAsync(int id);
+        Task<int?> CheckUserAuthAsync(string email, string password);
     }
 }

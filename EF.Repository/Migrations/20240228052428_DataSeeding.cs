@@ -18,8 +18,8 @@ namespace EF.Repository.Migrations
                 columns: new[] { "Id", "IsActive", "Role_Name" },
                 values: new object[,]
                 {
-                    { 1, true, "Admin" },
-                    { 2, true, "Member" }
+                    { 1, true, "admin" },
+                    { 2, true, "member" }
                 });
 
             migrationBuilder.InsertData(
@@ -27,7 +27,7 @@ namespace EF.Repository.Migrations
                 columns: new[] { "Id", "CreatedOn", "Email", "IsActive", "Name", "Password" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@gmail.com", true, "Admin", "admin@123" },
+                    { 1, new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "admin@gmail.com", true, "admin", "admin@123" },
                     { 2, new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified), "member@gmail.com", true, "member", "member@123" }
                 });
 

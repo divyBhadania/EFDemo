@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EF.Repository.Migrations
 {
     [DbContext(typeof(EFDbContext))]
-    [Migration("20240227121505_DataSeeding")]
+    [Migration("20240228052428_DataSeeding")]
     partial class DataSeeding
     {
         /// <inheritdoc />
@@ -51,13 +51,13 @@ namespace EF.Repository.Migrations
                         {
                             Id = 1,
                             IsActive = true,
-                            Name = "Admin"
+                            Name = "admin"
                         },
                         new
                         {
                             Id = 2,
                             IsActive = true,
-                            Name = "Member"
+                            Name = "member"
                         });
                 });
 
@@ -101,7 +101,7 @@ namespace EF.Repository.Migrations
                             CreatedOn = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@gmail.com",
                             IsActive = true,
-                            Name = "Admin",
+                            Name = "admin",
                             Password = "admin@123"
                         },
                         new

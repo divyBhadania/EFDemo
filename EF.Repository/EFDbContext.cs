@@ -12,11 +12,11 @@ namespace EF.Repository
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Role>().HasData(
-                new Role() { Id = 1, Name = "Admin", IsActive = true },
-                new Role() { Id = 2, Name = "Member", IsActive = true });
+                new Role() { Id = 1, Name = "admin", IsActive = true },
+                new Role() { Id = 2, Name = "member", IsActive = true });
 
             modelBuilder.Entity<User>().HasData(
-                new User() { Id = 1, Name = "Admin", Email = "admin@gmail.com", Password = "admin@123", CreatedOn = new DateTime(2024, 02, 07), IsActive = true },
+                new User() { Id = 1, Name = "admin", Email = "admin@gmail.com", Password = "admin@123", CreatedOn = new DateTime(2024, 02, 07), IsActive = true },
                 new User() { Id = 2, Name = "member", Email = "member@gmail.com", Password = "member@123", CreatedOn = new DateTime(2024, 02, 07), IsActive = true });
             modelBuilder.Entity<UserRole>().HasData(
                 new UserRole() { Id = 1, UserId = 1, RoleId = 1, IsActive = true },

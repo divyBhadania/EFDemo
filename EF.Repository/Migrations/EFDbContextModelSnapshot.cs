@@ -48,13 +48,13 @@ namespace EF.Repository.Migrations
                         {
                             Id = 1,
                             IsActive = true,
-                            Name = "Admin"
+                            Name = "admin"
                         },
                         new
                         {
                             Id = 2,
                             IsActive = true,
-                            Name = "Member"
+                            Name = "member"
                         });
                 });
 
@@ -98,7 +98,7 @@ namespace EF.Repository.Migrations
                             CreatedOn = new DateTime(2024, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "admin@gmail.com",
                             IsActive = true,
-                            Name = "Admin",
+                            Name = "admin",
                             Password = "admin@123"
                         },
                         new
