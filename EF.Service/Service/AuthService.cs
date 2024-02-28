@@ -29,7 +29,7 @@ namespace EF.Service.Service
             try
             {
                 var userId = await _userRepository.CheckUserAuthAsync(loginDTO.Email, loginDTO.Password);
-                if (userId != null)
+                if (userId != null && userId != 0)
                 {
                     return new ResponseDTO()
                     {

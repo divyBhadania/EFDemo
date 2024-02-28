@@ -23,7 +23,8 @@ namespace EF.Repository.Repository
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
             if (user != null)
             {
-                _context.Users.Remove(user);
+                user.IsActive = false;
+                _context.Entry(user).Property("IsActive").IsModified = true;
                 return await _context.SaveChangesAsync() > 0;
             }
             return false;
@@ -39,24 +40,24 @@ namespace EF.Repository.Repository
             return await _context.Users.FirstOrDefaultAsync(x => x.Id == id && x.IsActive);
         }
 
-        public async Task<User> InsertAsync(User user)
+        public async Task<bool> InsertAsync(User user)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
             await _context.AddAsync(user);
             await _context.SaveChangesAsync();
             await _context.UserRoles.AddAsync(new UserRole() { UserId = user.Id, RoleId = 2, IsActive = true });
-            await _context.SaveChangesAsync();
+            var flag = await _context.SaveChangesAsync() > 0;
             await transaction.CommitAsync();
-            return user;
+            return flag;
         }
 
-        public async Task<User> UpdateAsync(User user)
+        public async Task<bool> UpdateAsync(User user)
         {
             _context.Entry(user).Property("Name").IsModified = true;
             _context.Entry(user).Property("Email").IsModified = true;
-            _context.Entry(user).Property("IsActive").IsModified = true;
-            await _context.SaveChangesAsync();
-            return user;
+            _context.Entry(user).Property("Password").IsModified = true;
+            var flag = await _context.SaveChangesAsync() > 0;
+            return flag;
         }
     }
 }
